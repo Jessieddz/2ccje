@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: #d3e2e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+  
+  .notebook {
+    position: relative;
+    width: 1000px;
+    height: 600px;
+    perspective: 2000px;
+  }
+  
+  .pages {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .page-group {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.4s ease, background-color 0.3s ease;
+    transform-origin: center;
+  }
+  
+  /* z-index 按顺序排 */
+  .page-group[data-index="0"] { z-index: 10; }
+  .page-group[data-index="1"] { z-index: 9; }
+  .page-group[data-index="2"] { z-index: 8; }
+  .page-group[data-index="3"] { z-index: 7; }
+  .page-group[data-index="4"] { z-index: 6; }
+
+  
+  .page-group:nth-of-type(2) .page.right .tab { top: 20px; }
+  .page-group:nth-of-type(3) .page.right .tab { top: 120px; }
+  .page-group:nth-of-type(4) .page.right .tab { top: 220px; }
+  .page-group:nth-of-type(5) .page.right .tab { top: 320px; }
+  
+  
+  .page {
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.5);
+    
+    position: relative;
+    transition: background-color 0.3s ease; /* 背景颜色过渡 */
+  }
+
+  .page-group[data-index="0"] .page {
+  background: #ffffff; /* 纯白，不透明 */
+  backdrop-filter: none; /* 取消磨砂 */
+  border: 1px solid #ddd; /* 可以轻微给一点灰色边框 */
+}
+  
+  .page.left { border-right: none; }
+  .page.right { border-left: none; }
+  
+  .page.right .tab {
+    position: absolute;
+    right: -120px;
+    top: 20px; /* 初始的top统一写，如果需要不同高度，单独设 */
+    width: 100px;
+    height: 40px;
+    background: #f6f6f6; /* 默认背景 */
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transform: rotate(90deg);
+    transform-origin: left center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    z-index: 5;
+  }
+  
+  /* 左侧tabs */
+  .tabs-left {
+    position: absolute;
+    top: 20px;
+    left: -120.5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 20;
+  }
+  
+  .tabs-left .tab {
+    width: 100px;
+    height: 40px;
+    background: #f6f6f6;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transform: rotate(-90deg);
+    transform-origin: right center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* divi */
+  .divider {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px; /* 稍微宽一点点，看起来更真实 */
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.05) 0%,     /* 顶端非常浅 */
+      rgba(0, 0, 0, 0.2) 50%,     /* 中间稍深 */
+      rgba(0, 0, 0, 0.05) 100%    /* 底端又很浅 */
+    );
+    border-radius: 2px; /* 两边稍微圆润，不死板 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 轻微模糊光晕 */
+    z-index: 8;
+    pointer-events: none;
+  }
+  
+  

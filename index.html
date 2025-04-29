@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Notebook Demo</title>
+  <link rel="stylesheet" href="in.css">
+</head>
+<body>
+    <div class="notebook">
+        <div class="pages">
+      
+          <!-- 当前页（静止） -->
+          <div class="page-group" data-index="0">
+            <div class="page left">Page 1</div>
+            <div class="divider"></div> <!-- 🌟 新加的中间线 -->
+            <div class="page right">Page 2</div>
+          </div>
+      
+          <!-- 后续右页带标签 -->
+          <div class="page-group" data-index="1">
+            <div class="page left">Page 3</div>
+            <div class="page right">
+              Page 4
+              <div class="tab" data-target="1" data-color="#f9c5d1">featured</div>
+            </div>
+          </div>
+      
+          <div class="page-group" data-index="2">
+            <div class="page left">Page 5</div>
+            <div class="page right">
+              Page 6
+              <div class="tab" data-target="2" data-color="#c7d8eb">shop all</div>
+            </div>
+          </div>
+      
+          <div class="page-group" data-index="3">
+            <div class="page left">Page 7</div>
+            <div class="page right">
+              Page 8
+              <div class="tab" data-target="3" data-color="#f5edcc">create outfit</div>
+            </div>
+          </div>
+      
+          <div class="page-group" data-index="4">
+            <div class="page left">Page 9</div>
+            <div class="page right">
+              Page 10
+              <div class="tab" data-target="4" data-color="#e2e2e2">archive</div>
+            </div>
+          </div>
+      
+        </div>
+      
+        <!-- 当前页左侧独立标签（保持原状） -->
+        <div class="tabs-left">
+          <div class="tab" data-target="0">about</div>
+        </div>
+      </div>
+      
+      
+      
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+   
+    <script src="ja.js"></script>
+</body>
+</html>
